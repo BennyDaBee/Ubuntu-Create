@@ -28,5 +28,6 @@ else
 echo -e "${RED}Configuring SSH"
 echo 'HostKeyAlgorithms +ssh-rsa' >> /etc/ssh/sshd_config
 sudo systemctl restart ssh
+fi
 
 echo -e "${NC}Script Complete"
