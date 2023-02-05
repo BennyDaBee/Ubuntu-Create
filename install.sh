@@ -22,5 +22,11 @@ sudo usermod -aG docker bennythebee
 newgrp docker
 fi
 
+if grep -Fxq "HostKeyAlgorithms +ssh-rsa" /etc/ssh/sshd_config then
+echo -e "${BLUE}SSH Already Configured"
+else
+echo -e "${RED}Configuring SSH"
+echo 'HostKeyAlgorithms +ssh-rsa' >> /etc/ssh/sshd_config
+sudo systemctl restart ssh
 
 echo -e "${NC}Script Complete"
