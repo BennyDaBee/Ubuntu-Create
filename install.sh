@@ -4,6 +4,9 @@ WHITE='\033[0;37m'
 RED='\033[0;31m'
 NC='\033[0m'
 
+echo -e "{RED} Installing Updates"
+sudo apt-get upgrade -y
+
 if systemctl --all --type service | grep -q 'ajenti'; then
 echo -e "${BLUE}Ajenti is Installed"
 else
