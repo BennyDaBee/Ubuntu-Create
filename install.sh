@@ -21,7 +21,7 @@ echo -e "${RED}Installing Docker"
 sudo apt-get -y install docker.io
 sudo snap install docker
 sudo groupadd docker
-sudo usermod -aG docker bennythebee
+sudo usermod -aG docker $SUDO_USER
 newgrp docker
 fi
 
