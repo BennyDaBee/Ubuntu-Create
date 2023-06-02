@@ -7,13 +7,6 @@ NC='\033[0m'
 echo -e "{RED} Installing Updates"
 sudo apt-get upgrade -y
 
-if systemctl --all --type service | grep -q 'ajenti'; then
-echo -e "${BLUE}Ajenti is Installed"
-else
-echo -e "${RED}Installing Ajenti"
-curl https://raw.githubusercontent.com/ajenti/ajenti/master/scripts/install.sh | sudo bash -s -
-fi
-
 if systemctl --all --type service | grep -q 'docker'; then
 echo -e "${BLUE}Docker is Installed"
 else
