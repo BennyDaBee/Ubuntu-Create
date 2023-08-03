@@ -15,17 +15,6 @@ sudo systemctl restart procps
 echo -e "${RED} Installing Updates"
 sudo apt-get upgrade -y
 
-if systemctl --all --type service | grep -q 'docker'; then
-echo -e "${BLUE}Docker is Installed"
-else
-echo -e "${RED}Installing Docker"
-sudo apt-get -y install docker.io
-sudo snap install docker
-sudo groupadd docker
-sudo usermod -aG docker $SUDO_USER
-newgrp docker
-fi
-
 if grep -Fxq "HostKeyAlgorithms +ssh-rsa" /etc/ssh/sshd_config; then
 echo -e "${BLUE}SSH Already Configured"
 else
