@@ -20,14 +20,14 @@ echo -e "${YELLOW}Setting Time Zone to CST"
 sudo timedatectl set-timezone America/Chicago
 echo -e "${GREEN}Complete"
 
-echo -e "${RED} Installing Updates"
+echo -e "${YELLOW} Installing Updates"
 sudo apt-get upgrade -y
 echo -e "${GREEN}Complete"
 
 if grep -Fxq "HostKeyAlgorithms +ssh-rsa" /etc/ssh/sshd_config; then
-echo -e "${BLUE}SSH Already Configured"
+echo -e "${RED}SSH Already Configured"
 else
-echo -e "${RED}Configuring SSH"
+echo -e "${BLUE}Configuring SSH"
 echo 'HostKeyAlgorithms +ssh-rsa' >> /etc/ssh/sshd_config
 sudo systemctl restart ssh
 echo -e "${GREEN}Complete"
