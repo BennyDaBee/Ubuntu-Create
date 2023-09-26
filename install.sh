@@ -24,6 +24,19 @@ echo -e "${YELLOW} Installing Updates"
 sudo apt-get upgrade -y
 echo -e "${GREEN}Complete"
 
+if systemctl --all --type service | grep -q 'docker'; then
+echo -e "${RED}Docker is Installed"
+else
+echo -e "${BLUE}Installing Docker"
+sudo snap refresh
+sudo apt-get -y install docker.io
+sudo snap install docker
+sudo groupadd docker
+sudo usermod -aG docker $SUDO_USER
+newgrp docker
+echo -e "${GREEN}Complete"
+fi
+
 if grep -Fxq "HostKeyAlgorithms +ssh-rsa" /etc/ssh/sshd_config; then
 echo -e "${RED}SSH Already Configured"
 else
