@@ -24,6 +24,13 @@ echo -e "${YELLOW} Installing Updates"
 sudo apt-get upgrade -y
 echo -e "${GREEN}Complete"
 
+echo -e "${BLUE}Installing Wazuh"
+sudo wget https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.7.3-1_amd64.deb && sudo WAZUH_MANAGER='172.24.10.24' dpkg -i ./wazuh-agent_4.7.3-1_amd64.deb
+sudo systemctl daemon-reload
+sudo systemctl enable wazuh-agent
+sudo systemctl start wazuh-agent
+echo -e "${GREEN}Complete"
+
 if systemctl --all --type service | grep -q 'docker'; then
 echo -e "${RED}Docker is Installed"
 else
