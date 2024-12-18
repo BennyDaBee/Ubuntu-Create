@@ -8,6 +8,9 @@ GREEN='\033[0;32m'
 CYAN='\033[0;36m'
 
 echo -e "${BLUE}Disabling IPv6"
+if grep -Fxq "net.ipv6.conf.all.disable_ipv6 = 1" /etc/sysctl.d/60-custom.conf
+echo -e "${RED}IPv6 Already Disabled"
+else
 touch /etc/sysctl.d/60-custom.conf
 echo "net.ipv6.conf.all.disable_ipv6 = 1" >> /etc/sysctl.d/60-custom.conf
 echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.d/60-custom.conf
