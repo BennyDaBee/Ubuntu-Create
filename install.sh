@@ -38,7 +38,7 @@ echo -e "${GREEN}Complete"
 echo -e "${CYAN}Configuring Netplan"
 sudo wget --inet4-only https://raw.githubusercontent.com/BennyDaBee/Ubuntu-Create/main/00-installer-config.yaml -O /tmp/00-installer-config.yaml
 sudo mv /etc/netplan/00-installer-config.yaml /etc/netplan/00-installer-config.yaml.old
-sudo mv /tmp/00-installer-config.yml /etc/netplan/00-installer-config.yaml
+sudo mv /tmp/00-installer-config.yaml /etc/netplan/00-installer-config.yaml
 sudo netplan apply
 echo -e "${GREEN}Complete"
 
