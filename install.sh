@@ -29,11 +29,15 @@ sudo apt-get upgrade -y
 echo -e "${GREEN}Complete"
 
 echo -e "${BLUE}Installing Wazuh"
+if dpkg -s wazuh-agent; then
+echo -e "${RED}Wazuh Agnet Already Installed"
+else
 sudo wget --inet4-only https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.7.3-1_amd64.deb && sudo WAZUH_MANAGER='172.24.10.24' dpkg -i ./wazuh-agent_4.7.3-1_amd64.deb
 sudo systemctl daemon-reload
 sudo systemctl enable wazuh-agent
 sudo systemctl start wazuh-agent
 echo -e "${GREEN}Complete"
+fi
 
 if grep -Fxq "HostKeyAlgorithms +ssh-rsa" /etc/ssh/sshd_config; then
 echo -e "${RED}SSH Already Configured"
