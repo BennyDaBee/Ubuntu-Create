@@ -32,7 +32,7 @@ echo -e "${BLUE}Installing Wazuh"
 if dpkg -s wazuh-agent; then
 echo -e "${RED}Wazuh Agnet Already Installed"
 else
-sudo wget --inet4-only https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.7.3-1_amd64.deb && sudo WAZUH_MANAGER='172.24.10.24' dpkg -i ./wazuh-agent_4.7.3-1_amd64.deb
+sudo wget --inet4-only https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.11.2-1_amd64.deb && sudo WAZUH_MANAGER='172.24.10.24' dpkg -i ./wazuh-agent_4.11.2-1_amd64.deb
 sudo systemctl daemon-reload
 sudo systemctl enable wazuh-agent
 sudo systemctl start wazuh-agent
