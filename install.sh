@@ -35,13 +35,6 @@ sudo systemctl enable wazuh-agent
 sudo systemctl start wazuh-agent
 echo -e "${GREEN}Complete"
 
-echo -e "${CYAN}Configuring Netplan"
-sudo wget --inet4-only https://raw.githubusercontent.com/BennyDaBee/Ubuntu-Create/main/00-installer-config.yaml -O /tmp/00-installer-config.yaml
-sudo mv /etc/netplan/00-installer-config.yaml /etc/netplan/00-installer-config.yaml.old
-sudo mv /tmp/00-installer-config.yaml /etc/netplan/00-installer-config.yaml
-sudo netplan apply
-echo -e "${GREEN}Complete"
-
 if grep -Fxq "HostKeyAlgorithms +ssh-rsa" /etc/ssh/sshd_config; then
 echo -e "${RED}SSH Already Configured"
 else
